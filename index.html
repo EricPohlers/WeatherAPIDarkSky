@@ -8,18 +8,51 @@
     <title>Weather</title>
 </head>
 <body>
-    
-    <div class="location">
-        <h1 class="location-timezone">Timezone</h1>
-        <canvas class="icon" width="128" height="128"></canvas>
-    </div>
-    <div class="temperature-section">
-        <div class="degree-section">
-        <h2 class="temperature-degree">34</h2>
-        <span>C</span>
+
+    <main>
+        <div class="current">
+            <div class="location">
+                <h1 class="location-timezone">Timezone</h1>
+                <canvas class="icon" width="128" height="128"></canvas>
+            </div>
+            <div class="temperature-section">
+                <div class="degree-section">
+                <h2 class="temperature-degree">34</h2>
+                <span>&ordm;C</span>
+                </div>
+                <div class="temperature-description">description</div>
+            </div>
         </div>
-        <div class="temperature-description">Its friggin hot</div>
-    </div>
+        <ul class="next-days">
+            <li class="flipper">
+            <div class="day-card">
+            </div>
+            </li>
+            <li class="flipper">
+            <div class="day-card">
+            </div>
+            </li>
+            <li class="flipper">
+            <div class="day-card">
+            </div>
+            </li>
+            <li class="flipper">
+            <div class="day-card">
+            </div>
+            </li>
+            <li class="flipper">
+            <div class="day-card">
+            </div>
+            </li>
+            <li class="flipper">
+            <div class="day-card">
+            </div>
+            </li>
+        </ul>
+    </main>
+    <footer>
+        <a href="https://darksky.net/poweredby/" class="foot">Powered by Dark Sky</a>
+    </footer>
 
     <script src="weather.js"></script>
     <script src="ui.js"></script>

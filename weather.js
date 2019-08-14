@@ -1,6 +1,6 @@
 class Weather{
     constructor(){
-        this.key = 'f77beb52d4ee74db60979920d88172ac';
+        this.key = 'fce3175ea830498ba5d147d23ef53881';
         //proxy because darksky wont work with localhost
         this.proxy = 'https://cors-anywhere.herokuapp.com/';
     }
