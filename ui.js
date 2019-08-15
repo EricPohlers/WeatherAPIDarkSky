@@ -12,10 +12,9 @@ class UI{
     }
 
     loadUI(data){
-        data.then((data) => {
-            console.log(data);
-            
-            
+        this.showAlert('Loading Data from API ...', 'process');
+        data.then((data) => {            
+            this.showAlert('Loading successfull', 'success', 3000);
             //Main part
             let {temperature, summary, icon} = data.currently;
             temperature = Math.floor(temperature);
@@ -49,7 +48,6 @@ class UI{
 
                     let {temperatureMin,temperatureMax, summary, icon, time} = data.daily.data[index+1];
                     day.innerHTML = `
-                     <div class="front">
                             <h2 class="header">${weekday[new Date(time*1000).getDay()]}</h2>
                             <canvas class="sub-icon" id="icon-${index+1}"></canvas>
                             <div class="content">
@@ -59,13 +57,11 @@ class UI{
                                 <li>${Math.floor((temperatureMin - 32) * (5 / 9))} - ${Math.floor((temperatureMax - 32) * (5 / 9))} °C</li>
                                 </ul>
                             </div>
-                     </div>
-                     <div class="back">
-                      <p>Text sollte lesbar sein</p>
-                     </div>
                     `;
                     this.setIcons(icon, document.querySelector(`#icon-${index+1}`));
                 });
+            }).catch(err => {
+                this.showAlert(err.message, 'error');
             });
         };
     
@@ -76,5 +72,28 @@ class UI{
                 return skycons.set(iconID, Skycons[currentIcon]);
             }
 
-    
+    //show alert (message, className, timeoutDuration)
+    showAlert(message, className, timeoutDuration){
+        this.hideAlert();
+        
+    //create div
+    const div = document.createElement('div');
+    //add classes
+    div.className = `alert ${className}`;
+    //add text
+    div.appendChild(document.createTextNode(message));
+    //get parent
+    const main = document.querySelector('main');
+    //get form
+    const current = document.querySelector('.current');
+    //insert alert
+    main.insertBefore(div,current);
+    if(timeoutDuration > 0){
+        setTimeout(this.hideAlert, timeoutDuration); 
+    }
+    }  
+    hideAlert(){
+        if(document.querySelector('.alert') != null)
+        document.querySelector('.alert').remove(); 
+    }
 }
